@@ -1,10 +1,22 @@
- const fn = (...args) => {
-    //当不确定方法的参数时，可以使用剩余参数
-    console.log(args[0]);
-    console.log(args[1]);
-    console.log(args[2]);
-    console.log(args[3]);
-};
+// 函数封装：定义一个定时器，每间隔 delay 毫秒之后，执行 callback 函数
+function myInterval(callback, delay = 100) {
+    let timeId = setInterval(() => callback(timeId), delay);
+}
 
-fn(1, 2);
-fn(1, 2, 3); //方法的定义中了四个参数，但调用函数时只使用了三个参数，ES6 中并不会报错。
+myInterval((timeId) => {
+    // 每间隔 500毫秒之后，向右移动 .box 元素
+    // const myBox = $('.box');
+    const myBox = document.getElementsByClassName('box')[0];
+    const left = parseInt(window.getComputedStyle(myBox).left);
+    myBox.style.left = left + 20 + 'px';
+    if (left > 300) {
+        clearInterval(timeId);
+
+        // 每间隔 10 毫秒之后，将 .box 元素的宽度逐渐缩小，直到消失
+        myInterval((timeId2) => {
+            const width = parseInt(window.getComputedStyle(myBox).width);
+            myBox.style.width = width - 1 + 'px';
+            if (width <= 0) clearInterval(timeId2);
+        }, 10);
+    }
+}, 200);
