@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        //入口函数
+        $(function () {
+            var jqLi = $("li");
+            for (var i = 0; i < jqLi.length; i++) {
+                if (i % 2 === 0) {
+                    //jquery对象，转换成了js对象
+                    jqLi[i].style.backgroundColor = "pink";
+                } else {
+                    jqLi[i].style.backgroundColor = "yellow";
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>生命壹号，永不止步</li>
+        <li>生命壹号，永不止步</li>
+        <li>生命壹号，永不止步</li>
+        <li>生命壹号，永不止步</li>
+        <li>生命壹号，永不止步</li>
+        <li>生命壹号，永不止步</li>
+        <li>生命壹号，永不止步</li>
+    </ul>
+</body>
+
+</html>

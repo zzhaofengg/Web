@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            //val();   获取标签中的value属性的值。带有参数是赋值(类比js中的value属性)
+            console.log($("input").val());
+
+            $("input").val("我是value()赋值的input内容");
+            console.log($("input").val());
+
+            console.log("-----------------");
+
+            //text();  获取双闭合标签中的文本值。（不识别标签）(类比js中的innerText)
+            console.log($("div").text());
+            $("div").text("<li>我是text()赋值的</li>")
+            console.log($("div").text());
+
+            console.log("-----------------");
+
+            //html();  获取双闭合标签中的文本值。（识别标签）(类比js中的innerHTML)
+            console.log($("div").html());
+            $("div").html("<li>我是html()赋值的</li>");
+            console.log($("div").html());
+        })
+    </script>
+</head>
+<body>
+<input type="text" value="我是input中已存在的 value内容"/>
+<div>
+    <li>你好</li>
+</div>
+</body>
+</html>

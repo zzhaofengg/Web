@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        // 【方式一：先加载，后执行】这段 js 代码是写在 <head> 标签里的，所以建议放在 window.onload 里面。
+        window.onload = function () {
+            // 获取id为btn的按钮
+            var btn = document.getElementById("btn");
+            // 为按钮绑定点击事件
+            btn.onclick = function () {
+                alert("hello");
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <button id="btn">点我一下</button>
+
+    <script type="text/javascript">
+        // 【方式二：后加载，后执行】这段 js 代码是写在 <body> 标签里的，代码的位置是处在页面的下方。这么做，也可以确保：在页面加载完毕后，再执行 js 代码。
+
+        // 获取id为btn的按钮
+        var btn = document.getElementById("btn");
+        // 为按钮绑定点击事件
+        btn.onclick = function () {
+            alert("hello");
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box1"></div>
+
+    <script type="text/javascript">
+        var div1 = document.getElementById("box1");
+        //点击鼠标时，原本粉色的div变大了，背景变红了
+        div1.onclick = function () {
+            div1.style.width = "200px";   //属性值要写引号
+            div1.style.height = "200px";
+            div1.style.backgroundColor = "red";   //属性名是backgroundColor，不是background-color
+        }
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            console.log("smyhvae");  //等页面加载完毕时，打印字符串
+        }
+    </script>
+
+
+    <!-- <script>
+        //利用构造函数自定义对象
+        var stu1 = new Student('smyh');
+        console.log(stu1);
+        stu1.sayHi();
+
+        var stu2 = new Student('vae');
+        console.log(stu2);
+        stu2.sayHi();
+
+
+        // 创建一个构造函数
+        function Student(name) {
+            this.name = name; //this指的是当前对象实例【重要】
+            this.sayHi = function () {
+                console.log(this.name + '厉害了');
+            };
+        }
+
+
+
+
+    </script>
+
+    <script>
+        var myJson = {
+            name: 'smyhvae',
+            aaa: 111,
+            bbb: 222,
+        };
+
+        //json遍历的方法：for...in...
+        for (var key in myJson) {
+            console.log(key); //获取 键
+            console.log(myJson[key]); //获取 值（第二种属性绑定和获取值的方法）
+            console.log('------');
+        }
+        console.log(typeof myJson)
+        console.log(myJson);
+        console.log(JSON.stringify(myJson));
+    </script> -->
+</body>
+
+</html>

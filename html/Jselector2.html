@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        $(function () {
+            //获取ul中的li设置为粉色
+            //后代：儿孙重孙曾孙玄孙....
+            var jqLi = $("ul li");
+            jqLi.css("margin", 5);
+            jqLi.css("background", "pink");
+
+            //子代：亲儿子
+            var jqOtherLi = $("ul>li");
+            jqOtherLi.css("background", "red");
+        });
+    </script>
+</head>
+
+<body>
+
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <ol>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ol>
+    </ul>
+
+</body>
+
+</html>

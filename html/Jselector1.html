@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        //入口函数
+        jQuery(document).ready(function () {
+
+            //三种方式获取jquery对象
+            var jqBox1 = $("#box");
+            var jqBox2 = $(".box");
+            var jqBox3 = $("div");
+
+            //操作标签选择器
+            jqBox3.css("width", 100);
+            jqBox3.css("height", 100);
+            jqBox3.css("margin", 10);
+            jqBox3.css("background", "pink");
+
+            //操作类选择器(隐式迭代，不用一个一个设置)
+            jqBox2.css("background", "red");
+
+            //操作id选择器
+            jqBox1.css("background", "yellow");
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <div></div>
+    <div class="box"></div>
+    <div id="box"></div>
+    <div class="box"></div>
+    <div></div>
+
+</body>
+
+</html>

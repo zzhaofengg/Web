@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        $(function () {
+
+            //需求；隔行变色；鼠标悬停时，还要变色。
+            var jqli1 = $("li:odd");
+            var jqli2 = $("li:even");
+            jqli1.css("background", "#cccccc");
+            jqli2.css("background", "white");
+
+            //鼠标悬停时变色
+            var color = "";
+            $("li").mouseenter(function () {
+                color = $(this).css("background");  //先把之前的颜色保存下来，鼠标离开时还原
+                $(this).css("background", "green");
+            });
+            //鼠标离开时，恢复为原来的颜色
+            $("li").mouseleave(function () {
+                $(this).css("background", color);
+            });
+        });
+    </script>
+</head>
+<body>
+
+<ul>
+    <li>生命壹号，永不止步</li>
+    <li>生命壹号，永不止步</li>
+    <li>生命壹号，永不止步</li>
+    <li>生命壹号，永不止步</li>
+    <li>生命壹号，永不止步</li>
+    <li>生命壹号，永不止步</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        jQuery(function () {
+            var jqul = $("ul");
+
+            //find(selector); 从jquery对象的后代中查找
+            //必须制定参数，如果不指定获取不到元素。length === 0
+            jqul.find("li").css("background", "pink");
+            console.log(jqul.find());
+
+            //chidlren(selector); 从jquery对象的子代中查找
+            //不写参数代表获取所有子元素。
+            jqul.children("li").css("background", "green");
+
+            //eq(索引值); 从jquery对象的子代中查找该索引值的元素
+            //要写该数组中的第几个。
+            jqul.children().eq(0).css("background", "red");
+
+            //next(); 该元素的下一个兄弟元素
+            jqul.children().eq(0).next().css("background", "yellow");
+
+            //siblings(selector); 该元素的所有兄弟元素
+            jqul.children().eq(0).next().siblings().css("border", "1px solid blue");
+
+            //parent(); 该元素的父元素（和定位没有关系）
+            console.log(jqul.children().eq(0).parent());
+        });
+    </script>
+</head>
+
+<body>
+
+
+    <ul>
+        <li>生命壹号，永不止步</li>
+        <li class="box">生命壹号，永不止步</li>
+        <span>生命壹号，永不止步</span>
+        <li class="box">生命壹号，永不止步lv</li>
+        <i>生命壹号，永不止步</i>
+        <li>生命壹号，永不止步lv</li>
+        <a id="box" href="#">生命壹号，永不止步</a>
+        <ol>
+            <li>我是ol中的li</li>
+            <li>我是ol中的li</li>
+            <li>我是ol中的li</li>
+            <li>我是ol中的li</li>
+        </ol>
+    </ul>
+
+</body>
+
+</html>

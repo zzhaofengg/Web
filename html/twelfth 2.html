@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <button>按钮</button>
+
+    <script>
+        var btn = document.getElementsByTagName('button')[0];
+
+        myBind(btn, "click", function () {
+            alert(this);
+        });
+
+
+
+        //定义一个函数，用来为指定元素绑定响应函数
+        /*
+         * addEventListener()中的this，是绑定事件的对象
+         * attachEvent()中的this，是window
+         *  需要统一两个方法this
+         */
+        /*
+         * 参数：
+         *  element 要绑定事件的对象
+         *  eventStr 事件的字符串(不要on)
+         *  callback 回调函数
+         */
+        function myBind(element, eventStr, callback) {
+            if (element.addEventListener) {
+                //大部分浏览器兼容的方式
+                element.addEventListener(eventStr, callback, false);
+            } else {
+                /*
+                 * this是谁，由调用方式决定
+                 * callback.call(element)
+                 */
+                //IE8及以下
+                element.attachEvent("on" + eventStr, function () {
+                    //在匿名函数 function 中调用回调函数callback
+                    callback.call(element);
+                });
+            }
+        }
+
+        //点击页面的任何部分
+        document.onclick = function (event) {
+            event = event || window.event; ////兼容性写法
+
+            console.log(event);
+            console.log(event.timeStamp);
+            console.log(event.bubbles);
+            console.log(event.button);
+            console.log(event.pageX);
+            console.log(event.pageY);
+            console.log(event.screenX);
+            console.log(event.screenY);
+            console.log(event.target);
+            console.log(event.type);
+            console.log(event.clientX);
+            console.log(event.clientY);
+        }
+
+    </script>
+
+
+
+    <script src="tools.js"></script>
+    <script>
+        //需求：浏览器每次更改大小，判断是否符合某一标准然后给背景上色。
+        //  // >960红色，大于640小于960蓝色，小于640绿色。
+
+        window.onresize = fn;  //页面大小发生变化时，执行该函数。
+        //页面加载的时候直接执行一次函数，确定浏览器可视区域的宽，给背景上色
+        fn();
+
+        //封装成函数，然后指定的时候去调用和绑定函数名
+        function fn() {
+            if (client().width > 960) {
+                document.body.style.backgroundColor = "red";
+            } else if (client().width > 640) {
+                document.body.style.backgroundColor = "blue";
+            } else {
+                document.body.style.backgroundColor = "green";
+            }
+        }
+    </script>
+</body>
+
+</html>

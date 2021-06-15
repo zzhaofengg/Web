@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            display: none;
+            /*opacity: 1;*/
+            background-color: pink;
+        }
+    </style>
+
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.js"></script>
+
+    <script>
+        $(function () {
+            //点击按钮后产生动画
+            $("button:eq(0)").click(function () {
+                //                //淡入动画用法1:   fadeIn();   不加参数
+                $("div").fadeIn();
+
+                //                //淡入动画用法2:   fadeIn(2000);   毫秒值
+                //                $("div").fadeIn(2000);
+                //                //通过控制  透明度和display
+
+                //淡入动画用法3:   fadeIn(字符串);   slow慢：600ms   normal正常:400ms   fast快：200ms
+                //                $("div").fadeIn("slow");
+                //                $("div").fadeIn("fast");
+                //                $("div").fadeIn("normal");
+
+                //淡入动画用法4:   fadeIn(毫秒值，回调函数[显示完毕执行什么]);
+                //                $("div").fadeIn(5000,function () {
+                //                    alert("动画执行完毕！");
+                //                });
+            })
+
+            //滑出动画
+            $("button:eq(1)").click(function () {
+                //                //滑出动画用法1:   fadeOut();   不加参数
+                $("div").fadeOut();
+
+                //                //滑出动画用法2:   fadeOut(2000);   毫秒值
+                //                $("div").fadeOut(2000);  //通过这个方法实现的：display: none;
+                //                //通过控制  透明度和display
+
+                //滑出动画用法3:   fadeOut(字符串);   slow慢：600ms   normal正常:400ms   fast快：200ms
+                //                $("div").fadeOut("slow");
+                //                $("div").fadeOut("fast");
+                //                $("div").fadeOut("normal");
+
+                //滑出动画用法1:   fadeOut(毫秒值，回调函数[显示完毕执行什么]);
+                //                $("div").fadeOut(2000,function () {
+                //                    alert("动画执行完毕！");
+                //                });
+            })
+
+            $("button:eq(2)").click(function () {
+                //滑入滑出切换
+                //同样有四种用法
+                $("div").fadeToggle(1000);
+            })
+
+            $("button:eq(3)").click(function () {
+                //改透明度
+                //同样有四种用法
+                $("div").fadeTo(1000, 0.5, function () {
+                    alert(1);
+                });
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <button>淡入</button>
+    <button>淡出</button>
+    <button>切换</button>
+    <button>改透明度为0.5</button>
+    <div></div>
+
+</body>
+
+</html>

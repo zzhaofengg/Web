@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        /* #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            
+            position: absolute;
+        } */
+
+        .box {
+            width: 300px;
+            height: 200px;
+            padding-top: 100px;
+            background-color: pink;
+            margin: 100px;
+            text-align: center;
+            font: 18px/30px "simsun";
+            cursor: pointer;
+        }
+    </style>
+    <!-- <script src="tools.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            /*
+             * 使div可以跟随鼠标移动
+             */
+
+            //获取box1
+            var box1 = document.getElementById("box1");
+
+            //给整个页面绑定：鼠标移动事件
+            document.onmousemove = function (event) {
+                //兼容的方式获取event对象
+                event = event || window.event;
+
+                // 鼠标在页面的位置 = 滚动条滚动的距离 + 可视区域的坐标。
+                var pagex = event.pageX || scroll().left + event.clientX;
+                var pagey = event.pageY || scroll().top + event.clientY;
+
+
+                //   设置div的偏移量（相对于整个页面）
+                // 注意，如果想通过 style.left 来设置属性，一定要给 box1开启绝对定位。
+                box1.style.left = pagex + "px";
+                box1.style.top = pagey + "px";
+            };
+        };
+
+
+
+
+    </script> -->
+</head>
+
+<body>
+    <!-- <div id="box1"></div> -->
+    <div class="box"></div>
+
+    <script src="tools.js"></script>
+    <script>
+        //需求：鼠标进入盒子之后只要移动，哪怕1像素，随时显示鼠标在盒子中的坐标。
+        //技术点：新事件，onmousemove：在事件源上，哪怕鼠标移动1像素也会触动这个事件。
+        //一定程度上，模拟了定时器
+        //步骤：
+        //1.老三步和新五步
+        //2.获取鼠标在整个页面的位置
+        //3.获取盒子在整个页面的位置
+        //4.用鼠标的位置减去盒子的位置赋值给盒子的内容。
+
+        //1.老三步和新五步
+        var div = document.getElementsByClassName("box")[0];
+
+        div.onmousemove = function (event) {
+
+            event = event || window.event;
+            //2.获取鼠标在整个页面的位置
+            var pagex = event.pageX || scroll().left + event.clientX;
+            var pagey = event.pageY || scroll().top + event.clientY;
+            //3.获取盒子在整个页面的位置
+            // var xx =
+            // var yy =
+            //4.用鼠标的位置减去盒子的位置赋值给盒子的内容。
+            var targetx = pagex - div.offsetLeft;
+            var targety = pagey - div.offsetTop;
+            this.innerHTML = "鼠标在盒子中的X坐标为：" + targetx + "px;<br>鼠标在盒子中的Y坐标为：" + targety + "px;"
+        }
+
+    </script>
+
+</body>
+
+</html>

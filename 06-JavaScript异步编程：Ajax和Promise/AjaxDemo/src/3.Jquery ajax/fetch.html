@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX by fetch</title>
+</head>
+<body>
+    <button>AJAX请求</button>
+    <script>
+        const btn = document.querySelector('button');
+        btn.onclick = function(){
+            fetch('http://localhost:8000/fetch-server',{
+                method: 'POST',
+                headers:{
+                    name:'zhaofeng'
+                },
+                body:'username=admin&password=123456'
+            }).then(response =>{
+                return response.json();
+            }).then(response =>{
+                console.log(response)
+            })
+        }
+    </script>
+    
+</body>
+</html>

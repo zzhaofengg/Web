@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box11 {
+        background-color: pink;
+    }
+</style>
+
+<body>
+    <img src="image/hps.png" class="image-box" title="美女图片" alt="chensijiang" id="a1">
+
+    <div id="box1" value="111">
+        生命壹号
+    </div>
+
+    <div class="box11">
+        <div class="box12">生命壹号</div>
+    </div>
+
+    <div class="box21">
+        <div class="box22">永不止步</div>
+
+    </div>
+
+    <script>
+        var element = document.getElementById("box1");  //获取元素节点（标签）
+        var attribute = element.getAttributeNode("id"); //获取box1的属性节点
+        var txt = element.firstChild;                   //获取box1的文本节点
+
+        var value = element.getAttribute("id");         //获取id的属性值
+
+        //获取nodeType
+        console.log(element.nodeType);       //1
+        console.log(attribute.nodeType);     //2
+        console.log(txt.nodeType);           //3
+
+        console.log("--------------");
+
+        //获取nodeName
+        console.log(element.nodeName);       //DIV
+        console.log(attribute.nodeName);     //id
+        console.log(txt.nodeName);           //#text
+
+        console.log("--------------");
+
+        //获取nodeValue
+        console.log(element.nodeValue);     //null
+        console.log(attribute.nodeValue);   //box1
+        console.log(txt.nodeValue);         //生命壹号
+
+    </script>
+
+
+
+    <script>
+        var myNode = document.getElementsByTagName("img")[0];
+
+        console.log(myNode.src);
+        console.log(myNode.className);    //注意，是className，不是class
+        console.log(myNode.title);
+
+        console.log("------------");
+
+        console.log(myNode["src"]);
+        console.log(myNode["className"]); //注意，是className，不是class
+        console.log(myNode["title"]);
+
+        console.log("------------");
+
+        console.log(myNode.getAttribute("src"));
+        console.log(myNode.getAttribute("class"));   //注意是class，不是className
+        console.log(myNode.getAttribute("title"));
+
+        myNode.setAttribute("src", "image/cq.jpeg");
+        myNode.setAttribute("class", "image3-box");
+        myNode.setAttribute("title", "柴犬");
+
+        console.log("------------");
+
+        console.log(myNode.getAttribute("src"));
+        console.log(myNode.getAttribute("class"));   //注意是class，不是className
+        console.log(myNode.getAttribute("title"));
+    </script>
+
+    <script>
+        var box11 = document.getElementsByClassName("box11")[0];
+        var box12 = document.getElementsByClassName("box12")[0];
+
+        var box22 = document.getElementsByClassName("box22")[0];
+        var boximg = document.getElementsByClassName("image-box")[0];
+
+        box11.appendChild(box22);
+        // box11.removeChild(box12);
+        // box11.cloneNode(true);
+
+    </script>
+</body>
+
+</html>

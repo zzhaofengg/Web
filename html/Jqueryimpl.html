@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            height: 100px;
+            background-color: pink;
+            margin: 10px;
+            display: none;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        //jquery版
+        $(document).ready(function () {
+            //获取元素
+            var jQbtn = $("button");//根据标签名获取元素
+            var jQdiv = $("div");//根据标签名获取元素
+            //绑定事件
+            jQbtn.click(function () {
+                jQdiv.show(4000);//显示盒子。
+                jQdiv.html("tomorrow！");//设置内容
+                //上面的两行可以写成链式编程：jQdiv.show(3000).html(1111);
+
+            });//事件是通过方法绑定的。
+
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <button>显示五个div盒子和设置内容</button>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        console.log($);
+        console.log(jQuery);
+        console.log($ === jQuery);
+    </script>
+
+
+    <div class="box"></div>
+    <div id="box"></div>
+    <div class="box"></div>
+    <div></div>
+
+    <script>
+        var myBox = document.getElementById("box"); //通过 id 获取单个元素
+        var boxArr = document.getElementsByClassName("box"); //通过 class 获取的是数组
+        var divArr = document.getElementsByTagName("div"); //通过标签获取的是数组
+        //获取的是数组，里面包含着原生 JS 中的DOM对象。
+        var jqBox1 = $("#box");
+        var jqBox2 = $(".box");
+        var jqBox3 = $("div");
+
+        console.log("---------js----------");
+        console.log(myBox);
+        console.log(boxArr);
+        console.log(divArr);
+
+        console.log("---------jq----------");
+        console.log(jqBox1);
+        console.log(jqBox2);
+        console.log(jqBox3);
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var ua = navigator.userAgent; // 获取当前浏览器的 userAgent
+
+            console.log('qianguyihao 当前浏览器的UA是：' + ua);
+
+            if (/firefox/i.test(ua)) {
+                alert('是火狐浏览器');
+            } else if (/chrome/i.test(ua)) {
+                alert('是Chrome浏览器');
+            } else if (/msie/i.test(ua)) {
+                alert('是IE浏览器');
+            } else if ('ActiveXObject' in window) {
+                alert('是 IE11 浏览器');
+            }
+        </script>
+    </body>
+</html>

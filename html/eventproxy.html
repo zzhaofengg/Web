@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+
+
+        window.onload = function () {
+
+            // 获取父节点，并为它绑定click单击事件。 false 表示事件在冒泡阶段触发（默认）
+            document.getElementById('parent-list').addEventListener('click', function (event) {
+                event = event || window.event;
+
+                // e.target 表示：触发事件的对象
+                //如果触发事件的对象是我们期望的元素，则执行否则不执行
+                if (event.target && event.target.className == 'link') {
+                    // 或者写成 if (event.target && event.target.nodeName.toUpperCase() == 'A') {
+                    console.log('我是ul的单击响应函数');
+                }
+            }, false);
+        };
+    </script>
+</head>
+
+<body>
+    <ul id="parent-list" style="background-color: #bfa;">
+        <li>
+            <p>我是p元素</p>
+        </li>
+        <li><a href="javascript:;" class="link">超链接一</a></li>
+        <li><a href="javascript:;" class="link">超链接二</a></li>
+        <li><a href="javascript:;" class="link">超链接三</a></li>
+        
+    </ul>
+    <input type="text" />
+
+    <script>
+        document.onkeydown = function (event) {
+            event = event || window.event;
+            console.log('qianguyihao 键盘按下了');
+            // 判断y和ctrl是否同时被按下
+            if (event.ctrlKey && event.keyCode === 89) {
+                console.log('ctrl和y都被按下了');
+            }
+        };
+
+        document.onkeyup = function () {
+            console.log('qianguyihao 键盘松开了');
+        };
+
+        
+        
+        //获取input
+        var input = document.getElementsByTagName('input')[0];
+
+        input.onkeydown = function (event) {
+            event = event || window.event;
+
+            //console.log('qianguyihao:' + event.keyCode);
+            //数字 48 - 57
+            //使文本框中不能输入数字
+            if (event.keyCode >= 48 && event.keyCode <= 57) {
+                //在文本框中输入内容，属于onkeydown的默认行为
+                return false; // 如果在onkeydown中取消了默认行为，则输入的内容，不会出现在文本框中
+            }
+        };
+
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            height: 100px;
+            background-color: pink;
+            margin: 10px;
+            display: none;
+        }
+    </style>
+
+    <script>
+        //原生js
+        window.onload = function () {
+            var btn = document.getElementsByTagName("button")[0];
+            var divArr = document.getElementsByTagName("div");
+
+            btn.onclick = function () {
+                for (var i = 0; i < divArr.length; i++) {
+                    divArr[i].style.display = "block";
+                    divArr[i].innerHTML = "生命壹号";
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <button>显示五个div盒子和设置内容</button>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+</body>
+
+</html>

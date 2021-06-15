@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            background-color: pink;
+            /*border: 1px solid #000;*/
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="width: 100px;height: 100px;"></div>
+
+    <script>
+
+        var div1 = document.getElementsByTagName("div")[0];
+
+        console.log(getStyle(div1, "padding"));
+        console.log(getStyle(div1, "width"));
+        console.log(getStyle(div1, "background-color"));
+        console.log(getStyle(div1, "height"));
+
+
+        /*
+         * 兼容方法，获取元素当前正在显示的样式。
+         * 参数：
+         *      obj     要获取样式的元素
+         *.     name    要获取的样式名
+        */
+        function getStyle(ele, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(ele, null)[attr];
+            }
+            return ele.currentStyle[attr];
+        }
+
+    </script>
+</body>
+
+</html>

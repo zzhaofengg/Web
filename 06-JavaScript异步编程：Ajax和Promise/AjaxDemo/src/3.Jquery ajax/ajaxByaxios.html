@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax by axios</title>
+    <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="page-header">Ajax by axios</h2>
+        <button>GET</button>
+        <button>POST</button>
+        <button>AJAX</button>
+    </div>
+
+    <script>
+        const btns = document.querySelectorAll('button');
+        axios.defaults.baseURL = 'http://localhost:8000';
+        btns[0].onclick = function () {
+            //GET请求
+            axios.get('/axios-server', {
+                //url参数
+                params: {
+                    id: 100,
+                    vip: 7
+                },
+                //请求头信息
+                headers: {
+                    name: 'zhaofeng',
+                    age: 20
+                }
+
+            }).then(value => {
+                console.log(value);
+            })
+        }
+        btns[1].onclick = function () {
+            //POST请求
+            //GET请求
+            axios.post('/axios-server', {
+                //请求体
+                username: 'admin',
+                password: '123456'
+            }, {
+                //url参数
+                params: {
+                    id: 200,
+                    vip: 9
+                },
+                //请求头信息
+                headers: {
+                    name: 'zhaofeng',
+                    weight: 50
+                }
+            })
+        }
+
+        btns[2].onclick = function(){
+            axios({
+                method: 'POST',
+                //url
+                url:'/axios-server',
+                //url参数
+                params: {
+                    id: 101,
+                    level: 10
+                },
+                headers: {
+                    a:100,
+                    b:200
+                },
+                data:{
+                    username:'zhaofeng',
+                    password:'123456'
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

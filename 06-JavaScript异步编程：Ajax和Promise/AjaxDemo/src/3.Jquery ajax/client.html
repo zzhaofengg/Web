@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax by Jquery</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.bdstatic.com/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="page-header">Ajax by Jquery</h2>
+        <button>GET</button>
+        <button>POST</button>
+        <button>通用方法ajax</button>  
+    </div>
+
+
+
+    <script>
+       $('button').eq(0).click(function(){
+           $.get('http://localhost:8000/jquery-server', {a:100, b:200}, function(data){
+               console.log(data);
+           },'json');
+       })
+
+       $('button').eq(1).click(function(){
+           $.post('http://localhost:8000/jquery-server', {a:100, b:200}, function(data){
+               console.log(data);
+           });
+       })
+
+       $('button').eq(2).click(function(){
+           $.ajax({
+               url:'http://localhost:8000/jquery-server',
+               data:{a:100, b:200},
+               type:'POST',
+               dataType:'json',
+               success:function(data){
+                   console.log(data);
+               },
+               timeout:3000,
+               error:function(){
+                   console.log('出错啦');
+               },
+               headers:{
+                   c:300,
+                   d:400
+               }
+
+           });
+       })
+    </script>
+</body>
+
+</html>

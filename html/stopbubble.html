@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /*
+        * 开启box1的绝对定位
+        */
+            position: absolute;
+        }
+        #box2{
+            width: 300px; 
+            height: 300px; 
+            background-color: #bfa;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            /*
+             * 使div可以跟随鼠标移动
+             */
+
+            //获取box1
+            var box1 = document.getElementById('box1');
+
+            //给整个页面绑定：鼠标移动事件
+            document.onmousemove = function (event) {
+                //兼容的方式获取event对象
+                event = event || window.event;
+
+                // 鼠标在页面的位置 = 滚动条滚动的距离 + 可视区域的坐标。
+                var pagex = event.pageX || scroll().left + event.clientX;
+                var pagey = event.pageY || scroll().top + event.clientY;
+
+                //   设置div的偏移量（相对于整个页面）
+                // 注意，如果想通过 style.left 来设置属性，一定要给 box1 开启绝对定位。
+                box1.style.left = pagex + 'px';
+                box1.style.top = pagey + 'px';
+            };
+
+            // 【重要注释】
+            // 当 document.onmousemove 和 box2.onmousemove 同时触发时，通过  box2 阻止事件向 document 冒泡。
+            // 也就是说，只要是在 box2 的区域，就只触发 document.onmousemove 事件
+            var box2 = document.getElementById('box2');
+            box2.onmousemove = function (event) {
+                //阻止冒泡
+                event = event || window.event;
+
+                if (event && event.stopPropagation) {
+                    event.stopPropagation();
+                } else {
+                    event.cancelBubble = true;
+                }
+            };
+        };
+
+        // scroll 函数封装
+        function scroll() {
+            return {
+                //此函数的返回值是对象
+                left: window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop,
+                right: window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft,
+            };
+        }
+    </script>
+</head>
+
+<body style="height: 1000px;width: 2000px;">
+    <div id="box2" ></div>
+    <div id="box1"></div>
+
+    
+</body>
+
+</html>

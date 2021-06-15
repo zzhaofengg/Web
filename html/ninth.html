@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            margin: 3px;
+            border: 8px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        静，能寒窗苦守；动，能点石成金。
+        静，能寒窗苦守；动，能点石成金。
+        静，能寒窗苦守；动，能点石成金。
+        静，能寒窗苦守；动，能点石成金。
+        静，能寒窗苦守；动，能点石成金。
+        静，能寒窗苦守；动，能点石成金。
+    </div>
+    <script>
+
+        var div = document.getElementsByTagName("div")[0];
+
+        // `scrollHeight` 的特点是：如果内容超出了盒子，`scrollHeight`为内容的高（包括超出的内容）；如果不超出，`scrollHeight`为盒子本身的高度。
+        //IE8以下（不包括IE8），为盒子本身内容的高度。
+        console.log(div.scrollWidth);
+        console.log(div.scrollHeight);
+
+    </script>
+</body>
+
+</html>
