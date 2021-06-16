@@ -41,7 +41,7 @@ app.all('/jquery-server', (requset, response) => {
     response.setHeader('Access-Control-Allow-Headers', '*');
 
     //设置响应体
-    const data = {name: 'zhaofeng'};
+    const data = { name: 'zhaofeng' };
     const str = JSON.stringify(data);
     response.send(str);
 
@@ -54,7 +54,7 @@ app.all('/axios-server', (requset, response) => {
     response.setHeader('Access-Control-Allow-Headers', '*');
 
     //设置响应体
-    const data = {name: 'zhaofeng'};
+    const data = { name: 'zhaofeng' };
     const str = JSON.stringify(data);
     response.send(str);
 
@@ -68,7 +68,7 @@ app.all('/fetch-serve:r', (requset, response) => {
     response.setHeader('Access-Control-Allow-Headers', '*');
 
     //设置响应体
-    const data = {name: 'zhaofeng'};
+    const data = { name: 'zhaofeng' };
     const str = JSON.stringify(data);
     response.send(str);
 
@@ -91,7 +91,7 @@ app.all('/json-server', (requset, response) => {
 
 });
 
-app.all('/jsonp-server',(request,response) =>{
+app.all('/jsonp-server', (request, response) => {
     // response.send('console.log("Jsonp server hello!")');
     const data = {
         name: 'zhaofeng'
@@ -103,11 +103,11 @@ app.all('/jsonp-server',(request,response) =>{
     response.end(`handle(${str})`);
 });
 
-app.all('/check-username',(request,response) =>{
+app.all('/check-username', (request, response) => {
     // response.send('console.log("Jsonp server hello!")');
     const data = {
-        exist:1,
-        msg:'用户名已存在'
+        exist: 1,
+        msg: '用户名已存在'
     };
     //将数据转化为字符串
     let str = JSON.stringify(data);
@@ -116,11 +116,43 @@ app.all('/check-username',(request,response) =>{
     response.end(`handle(${str})`);
 });
 
-app.all('/jquery-jsonp-server',(request,response) =>{
+app.all('/promise-server', (request, response) => {
+    //设置响应头，允许跨域
+    response.setHeader('Access-Control-Allow-Origin', '*');
+
+    const data = { retCode: 0, msg: 'zhaofeng' }
+    let str = JSON.stringify(data) ;
+
+    //设置响应体
+    response.send(str);
+});
+
+app.all('/promise-a', (request, response) => {
+    //设置响应头，允许跨域
+    response.setHeader('Access-Control-Allow-Origin', '*');
+
+    response.send('receieve by promise-a');
+});
+
+app.all('/promise-b', (request, response) => {
+    //设置响应头，允许跨域
+    response.setHeader('Access-Control-Allow-Origin', '*');
+
+    response.send('receieve by promise-b');
+});
+
+app.all('/promise-c', (request, response) => {
+    //设置响应头，允许跨域
+    response.setHeader('Access-Control-Allow-Origin', '*');
+
+    response.send('receieve by promise-c');
+});
+
+app.all('/jquery-jsonp-server', (request, response) => {
     // response.send('console.log("Jsonp server hello!")');
     const data = {
         name: 'zhaofeng',
-        city:['北京','南京','驻马店']
+        city: ['北京', '南京', '驻马店']
     };
     //将数据转化为字符串
     let str = JSON.stringify(data);
