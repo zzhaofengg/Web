@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chain of Promise MutiImpl</title>
+</head>
+
+<body>
+    <script>
+        // 封装 ajax 请求：传入回调函数 success 和 fail
+        function ajax(url, success, fail) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open('GET', url);
+            xmlhttp.send();
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                    success && success(xmlhttp.responseText);
+                } else {
+                    fail && fail(new Error('接口请求失败'));
+                }
+            };
+        }
+
+        // Promise 封装接口1
+        function request1() {
+            return new Promise((resolve, reject) => {
+                ajax('https://www.baidu.com', (res) => {
+                    if (res.retCode == 201) {
+                        // 接口请求成功时调用：这里的 res 是接口1的返回结果
+                        resolve('request1 success' + res);
+                    } else {
+                        // 接口请求异常时调用异常
+                        reject('接口1请求失败');
+                    }
+                });
+            });
+        }
+
+        // Promise 封装接口2
+        function request2() {
+            return new Promise((resolve, reject) => {
+                ajax('https://www.jd.com', (res) => {
+                    if (res.retCode == 202) {
+                        // 这里的 res 是接口2的返回结果
+                        resolve('request2 success' + res);
+                    } else {
+                        reject('接口2请求失败');
+                    }
+                });
+            });
+        }
+
+        // Promise 封装接口3
+        function request3() {
+            return new Promise((resolve, reject) => {
+                ajax('https://www.taobao.com', (res) => {
+                    if (res.retCode == 203) {
+                        // 这里的 res 是接口3的返回结果
+                        resolve('request3 success' + res);
+                    } else {
+                        reject('接口3请求失败');
+                    }
+                });
+            });
+        }
+
+        // 先发起request1，等resolve后再发起request2；紧接着，等 request2有了 resolve之后，再发起 request3
+        request1()
+            .then((res1) => {
+                // 接口1请求成功
+                console.log(res1);
+                return request2();
+            })
+            .then((res2) => {
+                // 接口2请求成功
+                console.log(res2);
+                return request3();
+            })
+            .then((res3) => {
+                // 接口3请求成功
+                console.log(res3);
+            })
+            .catch((err) => {
+                // 从 reject中获取异常结果
+                console.log(err);
+            });
+    </script>
+
+</body>
+
+</html>

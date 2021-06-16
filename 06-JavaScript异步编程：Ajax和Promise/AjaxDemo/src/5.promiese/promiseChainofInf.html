@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chain of Promise Impl</title>
+</head>
+
+<body>
+    <script>
+        // 封装 ajax 请求：传入回调函数 success 和 fail
+        function ajax(url, success, fail) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open('GET', url);
+            xmlhttp.send();
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                    success && success(xmlhttp.responseText);
+                } else {
+                    fail && fail(new Error('接口请求失败'));
+                }
+            };
+        }
+
+        // 第一步：model层，接口封装
+        function getPromise(url) {
+            return new Promise((resolve, reject) => {
+                ajax(url, (res) => {
+                    // 这里的 res 是接口的返回结果。返回码 retCode 是动态数据。
+                    resolve(res);
+                });
+            });
+        }
+
+        // 第二步：业务层的接口调用。这里的 data 就是 从 resolve 和 reject 传过来的，也就是从接口拿到的数据
+        getPromise('http://localhost:8000/promise-a')
+            .then((res) => {
+                // a 请求成功。从 resolve 获取正常结果：接口请求成功后，打印a接口的返回结果
+                console.log(res);
+                console.log('a成功');
+                return getPromise('http://localhost:8000/promise-b'); // 继续请求 b
+            })
+            .then((res) => {
+                // b 请求成功
+                console.log(res);
+                console.log('b成功');
+                return getPromise('http://localhost:8000/promise-c'); // 继续请求 c
+            })
+            .then((res) => {
+                // c 请求成功
+                console.log(res);
+                console.log('c成功');
+
+            });
+    </script>
+
+</body>
+
+</html>
