@@ -10,13 +10,21 @@
 
 <body>
     <script>
-        const name = 'qianguyihao';
+        var a = 1
 
-        function foo() {
-            console.log(name);
+        function fn1() {
+            var b = 2
+
+            function fn2() {
+                var c = 3
+                console.log(c)
+                console.log(b)
+                console.log(a)
+                console.log(d)
+            }
+            fn2()
         }
-
-        foo(); // 执行函数后，打印结果：smyhvae
+        fn1()
     </script>
 
 </body>
